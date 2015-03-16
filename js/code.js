@@ -5,12 +5,8 @@ $(function(){
     })
 })
 var swiperParent = new Swiper('.swiper-parent',{
-//pagination: '.pagination',
-mode: 'horizontal',
-noSwiping: true,
+pagination: '.pagination',
 paginationClickable: true,
-allowSwipeToPrev:false,
-allowSwipeToNext:false,
 onSlideChangeEnd : function() {
   //Do something when you touch the slide
   if (swiperParent.activeIndex != 0){
@@ -21,7 +17,6 @@ onSlideChangeEnd : function() {
   }  
 }
 })
-
 
 //Scroll Containers
 $('.swiper-nested').each(function(){
@@ -69,29 +64,28 @@ $('.swiper-nested').each(function(){
         setTimeout(fixheightposts, 1000);
 	});
 	
-	$(".post_details_page1 li").hide();
-	$(".posts1 li div span.detail").click(function(){
+	$(".post_details_page li").hide();
+	$(".posts li").click(function(){
 	
 		p_ID = this.id;
 		
-		$(".post_details_page1").find("li").each(function() { 
+		$(".post_details_page").find("li").each(function() { 
 			if(this.id == p_ID)
 			{
-				$(".posts_archive_page1").hide(); 
-				var detailspostid = $(".post_details_page1 li#" + this.id);
+				$(".posts_archive_page").hide(); 
+				var detailspostid = $(".post_details_page li#" + this.id);
 				detailspostid.show();
 				swipernested.reInit();
 				swipernested.swipeTo(0);
 				$('.backtoblog').click(function(){
 					 detailspostid.hide();
-					 $(".posts_archive_page1").show();
+					 $(".posts_archive_page").show();
 					 swipernested.reInit();
 				});	
 			}
 		});
 	
 	});
-
 	
 })
 
@@ -124,6 +118,4 @@ $(".post_more").click(function(){
 	$(this).toggleClass("activep").next().slideToggle("slow");
 	return false;
 });
-
-
 });
